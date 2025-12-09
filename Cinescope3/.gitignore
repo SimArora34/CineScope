@@ -1,0 +1,16 @@
+# Ignore environment variables file
+.env
+
+# Ignore compiled and temporary files
+bin/
+obj/
+packages/
+*.db
+*.sqlite
+
+# Visual Studio local files
+.vs/
+*.user
+*.suo
+*.vsidx
+TestResults/
