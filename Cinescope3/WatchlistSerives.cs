@@ -1,13 +1,13 @@
 ﻿using CineScope.Models;
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace CineScope.Services
 {
     public class WatchlistService
     {
-        private string Conn = "Data Source=cine.db";
+        private const string Conn = "Data Source=cine.db";
 
         public void AddMovie(Movie m, int watchlistId)
         {
@@ -20,9 +20,9 @@ namespace CineScope.Services
             var cmd = new SQLiteCommand(sql, con);
             cmd.Parameters.AddWithValue("@id", m.Id);
             cmd.Parameters.AddWithValue("@title", m.Title);
-            cmd.Parameters.AddWithValue("@year", m.Year);
-            cmd.Parameters.AddWithValue("@poster", m.PosterUrl);
-            cmd.Parameters.AddWithValue("@overview", m.Overview);
+            cmd.Parameters.AddWithValue("@year", m.Year ?? "");
+            cmd.Parameters.AddWithValue("@poster", m.PosterUrl ?? "");
+            cmd.Parameters.AddWithValue("@overview", m.Overview ?? "");
             cmd.Parameters.AddWithValue("@wid", watchlistId);
 
             cmd.ExecuteNonQuery();
